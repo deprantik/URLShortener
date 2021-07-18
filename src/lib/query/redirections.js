@@ -11,8 +11,14 @@ const getRedirectionsUrl = ({ fromUrl }) => db.one('SELECT * FROM redirections W
 
 const updateRedirectionStatus = ({ status = false, fromUrl }) => db.none('UPDATE redirections SET isActive = $1 WHERE fromUrl = $2', [status, fromUrl]);
 
+const updateHit = ({ fromUrl }) => db.none('UPDATE redirections SET hit = hit + 1 WHERE fromUrl = $2', [fromUrl]);
+
+const getRedirections = ({ limit = 8, offset = 0 }) => db.any('SELECT * FROM redirections WHERE "isActive" = ${1} ORDER BY "updatedAt" LIMIT ${2} OFFSET ${3}', [true, limit, offset])
+
 module.exports = {
   createRedirections,
   getRedirectionsUrl,
   updateRedirectionStatus,
+  updateHit,
+  getRedirections,
 }
