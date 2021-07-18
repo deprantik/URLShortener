@@ -19,7 +19,6 @@ const CustomCol = styled(Col)`
 
 const ListItem = styled.div`
 	width:100%;
-	word-break: break-word;
 `;
 
 const UrlListing = (props) => {
@@ -80,6 +79,10 @@ const UrlListing = (props) => {
 		</Row>
 	);
 };
+
+// UrlListing.propTypes = {
+
+// };
 
 const mapStateToProps = (redirectionData) => ({
 	redirectionData
