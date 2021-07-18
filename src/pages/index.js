@@ -30,6 +30,9 @@ const HomePage = () => {
 		<div>
 			<Spacer height={2} />
 			<Grid>
+				<h1>Welcome to the URL Shortening Application</h1>
+				<div><i>Please enter you original URL to get a short url</i></div>
+				<Spacer height={2} />
 				<form onSubmit={handleSubmit}>
 					<Row>
 						<Col xs={9}>

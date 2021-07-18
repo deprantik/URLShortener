@@ -18,6 +18,7 @@ const CustomCol = styled(Col)`
 
 const ListItem = styled.div`
 	width:100%;
+	word-break: break-word;
 `;
 
 class UrlListing extends Component {
@@ -32,6 +33,7 @@ class UrlListing extends Component {
 				<Col xs={12}>
 					<h2>List of all the urls</h2>
 				</Col>
+				<Spacer />
 				{data && data.length ?
 					<Col xs={12}>
 						<Row center="xs">
@@ -75,10 +77,6 @@ class UrlListing extends Component {
 		);
 	}
 };
-
-// UrlListing.propTypes = {
-
-// };
 
 const mapStateToProps = (redirectionData) => ({
 	redirectionData
