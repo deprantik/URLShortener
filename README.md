@@ -45,8 +45,8 @@ Front end and api is combined in 1 repo, since it is a small project. For scalab
 
   ## Fill the database with tables
 
-  npm run do-setup-database
-  npm run do-seed-database
+    npm run do-setup-database
+    npm run do-seed-database
 
   ## View the website
 
