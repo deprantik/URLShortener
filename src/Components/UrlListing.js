@@ -53,7 +53,7 @@ class UrlListing extends Component {
 							return (
 								<Row>
 									<CustomCol xs={1} noBorder>
-										<ListItem>{index}</ListItem>
+										<ListItem>{index+1}</ListItem>
 									</CustomCol>
 									<CustomCol xs={4} noBorder>
 										<ListItem>{item.fromUrl}</ListItem>
