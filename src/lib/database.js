@@ -5,5 +5,5 @@ const pgp = pg({
 })
 const envConfig = require('../../config.json');
 
-const postgresConnection = pgp(`postgres://${envConfig.postgres.username}:${envConfig.postgres.password}@${envConfig.postgres.host}:${envConfig.postgres.port}/${envConfig.postgres.database}`)
+const postgresConnection = pgp(`postgres://${envConfig.connection.user}:${envConfig.connection.password}@${envConfig.connection.host}:${envConfig.connection.port}/${envConfig.connection.database}`)
 module.exports = postgresConnection;

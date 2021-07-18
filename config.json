@@ -1,9 +1,10 @@
 {
-  "postgres": {
+  "client": "pg",
+  "connection": {
     "database": "url_shortening_db",
     "port": "5432",
     "host": "localhost",
-    "username": "prantik_de",
+    "user": "prantik_de",
     "password": "qwertyuiop"
   }
 }
