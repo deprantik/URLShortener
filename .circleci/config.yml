@@ -3,12 +3,12 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:12.22.3
+      - image: circleci/node:12.0.3
     steps:
       - checkout
       - run:
           name: Update NPM
-          command: "npm install --global yarn"
+          command: "sudo npm install --global yarn"
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
