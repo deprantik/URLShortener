@@ -18,7 +18,7 @@ const CustomHeader = styled.header`
 const Header = () => {
   return (
     <CustomHeader>
-      <div>
+      <div role={'heading'}>
         URL SHORTENER
       </div>
     </CustomHeader>
