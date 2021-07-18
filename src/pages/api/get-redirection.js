@@ -3,10 +3,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const getRedirection = async (req, res) => {
   try {
-    console.log("=====slug", req.query.slug)
-
     const redirectionData = await getRedirectionByToUrl({ slug: req.query.slug });
-
     return res.status(200).json({ status: 'SUCCESS', data: redirectionData });
   } catch (err) {
     console.log("Error finding redirection data", err);
@@ -19,6 +16,9 @@ const getRedirectionByToUrl = async ({ slug }) => {
     const fromUrl = `${API_URL}/${slug}`;
     console.log("=====fromUrl", fromUrl);
     const response = await dbServices.redirections.getRedirectionsUrl({ fromUrl });
+    if (response) {
+      await dbServices.redirections.updateHit({ fromUrl });
+    }
     return response;
   } catch (err) {
     throw new Error(err);
