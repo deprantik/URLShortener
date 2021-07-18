@@ -1,23 +1,23 @@
 const db = require('../database');
 
-const createRedirections = ({ fromUrl, toUrl, active = false,  }) => db.one(
-  'INSERT INTO redirections(fromUrl, toUrl, active) VALUES(${fromUrl}, ${toUrl}, ${active}) RETURNING *', {
+const createRedirections = ({ fromUrl, toUrl, status = true,  }) => db.one(
+  'INSERT INTO redirections("fromUrl", "toUrl", "isActive", "createdAt", "updatedAt") VALUES(${fromUrl}, ${toUrl}, ${status}, now(), now()) RETURNING *', {
     fromUrl,
     toUrl,
-    active
+    status
   });
 
-const getRedirectionsUrl = ({ fromUrl }) => db.one('SELECT * FROM redirections WHERE "fromUrl" = $1', fromUrl);
+const getRedirectionUrl = ({ fromUrl }) => db.one('SELECT * FROM redirections WHERE "fromUrl" = $1', fromUrl);
 
-const updateRedirectionStatus = ({ status = false, fromUrl }) => db.none('UPDATE redirections SET isActive = $1 WHERE fromUrl = $2', [status, fromUrl]);
+const updateRedirectionStatus = ({ status = false, fromUrl }) => db.none('UPDATE redirections SET "isActive" = $1 AND "updatedAt" = now() WHERE "fromUrl" = $2', [status, fromUrl]);
 
-const updateHit = ({ fromUrl }) => db.none('UPDATE redirections SET hit = hit + 1 WHERE fromUrl = $2', [fromUrl]);
+const updateHit = ({ fromUrl }) => db.none('UPDATE redirections SET hit = hit + 1 WHERE "fromUrl" = $1', [fromUrl]);
 
-const getRedirections = ({ limit = 8, offset = 0 }) => db.any('SELECT * FROM redirections WHERE "isActive" = ${1} ORDER BY "updatedAt" LIMIT ${2} OFFSET ${3}', [true, limit, offset])
+const getRedirections = ({ limit = 8, offset = 0 }) => db.any('SELECT * FROM redirections WHERE "isActive" = $1 ORDER BY "updatedAt" LIMIT $2 OFFSET $3', [true, limit, offset])
 
 module.exports = {
   createRedirections,
-  getRedirectionsUrl,
+  getRedirectionUrl,
   updateRedirectionStatus,
   updateHit,
   getRedirections,

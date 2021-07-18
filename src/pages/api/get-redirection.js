@@ -14,8 +14,7 @@ const getRedirection = async (req, res) => {
 const getRedirectionByToUrl = async ({ slug }) => {
   try {
     const fromUrl = `${API_URL}/${slug}`;
-    console.log("=====fromUrl", fromUrl);
-    const response = await dbServices.redirections.getRedirectionsUrl({ fromUrl });
+    const response = await dbServices.redirections.getRedirectionUrl({ fromUrl });
     if (response) {
       await dbServices.redirections.updateHit({ fromUrl });
     }

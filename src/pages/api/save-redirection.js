@@ -18,7 +18,6 @@ const createRedirectionUrl = async (req, res) => {
 
 const createRedirection = async ({ toUrl, fromUrl }) => {
 	try {
-		console.log("=====fromUrl", toUrl, fromUrl);
 		const response = await dbServices.redirections.createRedirections({ toUrl, fromUrl });
 		return response;
 	} catch (err) {
@@ -26,17 +25,17 @@ const createRedirection = async ({ toUrl, fromUrl }) => {
 	}
 }
 
-const createUniqueUrl = () => {
+const createUniqueUrl = async () => {
+	const slug = createAlphaNumericString(6);
+	const fromUrl = `${API_URL}/${slug}`;
 	try {
-		const slug = createAlphaNumericString(6);
-		const fromUrl = `${API_URL}/${slug}`;
-		const data = getRedirectionsUrl({ fromUrl })
+		const data = await dbServices.redirections.getRedirectionsUrl({ fromUrl })
 		if (data) {
 			return createUniqueSlug();
 		}
 		return fromUrl;
 	} catch (err) {
-		throw new Error(err);
+		return fromUrl;
 	}
 }
 

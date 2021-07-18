@@ -6,10 +6,12 @@ import { Button, Input, Spacer, UrlListing } from '../Components';
 const HomePage = () => {
 	const [shortUrl, setShortUrl] = useState(null);
 	const [active, setActive] = useState(false);
-	const handleSubmit = () => {
+	const [originalUrl, setOriginalURL] = useState('');
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		if (typeof window !== undefined) {
-			const href = window.location.href;
-			fetch(`/api/save-redirection?httpUrl=${href}`)
+			const href = originalUrl;
+			fetch(`/api/save-redirection?httpUrl=${href}`, { method: 'POST' })
 				.then(response => response.json())
 				.then(response => {
 					if (response.status === 'SUCCESS' && response.data.fromUrl) {
@@ -28,20 +30,26 @@ const HomePage = () => {
 		<div>
 			<Spacer height={2} />
 			<Grid>
+				<form onSubmit={handleSubmit}>
+					<Row>
+						<Col xs={9}>
+							<Input
+								name={'longUrl'}
+								type="url"
+								onChange={(e) => setOriginalURL(e.target.value)}
+								value={originalUrl}
+								placeholder="Please enter the original Url"
+								required
+							/>
+						</Col>
+						<Col xs={3}>
+							<Button>
+								Submit
+							</Button>
+						</Col>
+					</Row>
+				</form>
 				<Row>
-					<Col xs={9}>
-						<Input
-							name={'longUrl'}
-							type="url"
-							placeholder="Please enter the original Url"
-							required
-						/>
-					</Col>
-					<Col xs={3}>
-						<Button onClick={handleSubmit}>
-							Submit
-						</Button>
-					</Col>
 					<Spacer height={2} />
 					{shortUrl &&
 						<Col>
