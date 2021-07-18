@@ -55,8 +55,10 @@ const HomePage = () => {
 						<Col>
 							<span><b>Shortened URL:</b> &nbsp;</span>
 							{active ?
-								<Link href={shortUrl} target={'_blank'}>
-									{shortUrl}
+								<Link href={shortUrl} passHref>
+									<a target={'_blank'}>
+										{shortUrl}
+									</a>
 								</Link>
 							:
 								shortUrl

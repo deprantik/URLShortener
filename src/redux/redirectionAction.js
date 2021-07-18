@@ -21,7 +21,7 @@ export const fetchRedirectionData = (slug) => {
       })
       .catch(err => {
         fetchRedirectionDataFailed(dispatch, true);
-        return null
+        return null;
       })
   }
 }
