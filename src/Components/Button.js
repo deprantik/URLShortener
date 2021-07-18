@@ -10,6 +10,7 @@ const Button = styled.button`
   width: -webkit-fill-available;
   padding: 0 1rem;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 export default Button;
