@@ -51,3 +51,7 @@ Front end and api is combined in 1 repo, since it is a small project. For scalab
   ## View the website
 
   View http://localhost:5000 in your browser.
+
+  ## Api Test
+
+  Test api health on http://localhost:5000/api/testcase url.

@@ -14,7 +14,7 @@ export const fetchRedirectionData = (slug) => {
   return async (dispatch, state, { host }) => {
     fetchRedirectionDataLoading(dispatch, slug);
     const url = `${host}/api/get-redirection?slug=${slug}`
-    await fetch(url)
+    return fetch(url)
       .then(response => response.json())
       .then((redirectData) => {
         fetchRedirectionDataSuccess(dispatch, redirectData);
@@ -36,10 +36,10 @@ export const fetchRedirectionDataFailed = (dispatch, error) => dispatch({
   error
 });
 
-export const fetchAllRedirectionData = (slug) => {
+export const fetchAllRedirectionData = () => {
   return async (dispatch, state, { host }) => {
-    const url = `${host}/api/get-all-redirections?slug=${slug}`
-    await fetch(url)
+    const url = `${host}/api/get-all-redirections`
+    return fetch(url)
       .then(response => response.json())
       .then((datas) => {
         dispatch({

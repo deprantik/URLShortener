@@ -5,12 +5,12 @@
     "dev": "next dev -p 5000",
     "build": "next build",
     "start": "next start -p 5000",
+    "test": "jest",
     "lint": "next lint",
     "do-setup-database": "node ./scripts setup-database",
     "do-seed-database": "node ./scripts seed-database"
   },
   "dependencies": {
-    "data-models": "./models",
     "isomorphic-fetch": "^3.0.0",
     "knex": "^0.95.7",
     "next": "^10.0.5",
@@ -28,6 +28,26 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
     "@babel/register": "^7.14.5",
-    "nodemon": "^2.0.12"
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "redux-mock-store": "^1.5.4"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/src/pages/api/"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
