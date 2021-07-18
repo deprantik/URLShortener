@@ -5,11 +5,14 @@
     "dev": "next dev -p 5000",
     "build": "next build",
     "start": "next start -p 5000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "do-setup-database": "node ./scripts setup-database",
+    "do-seed-database": "node ./scripts seed-database"
   },
   "dependencies": {
     "data-models": "./models",
     "isomorphic-fetch": "^3.0.0",
+    "knex": "^0.95.7",
     "next": "^10.0.5",
     "next-redux-wrapper": "^6.0.2",
     "pg-promise": "^10.10.2",
@@ -23,6 +26,8 @@
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "@babel/register": "^7.14.5",
     "nodemon": "^2.0.12"
   }
 }
