@@ -20,8 +20,8 @@ export const fetchRedirectionData = (slug) => {
         fetchRedirectionDataSuccess(dispatch, redirectData);
       })
       .catch(err => {
-        console.log("Fetch Failed", err);
         fetchRedirectionDataFailed(dispatch, true);
+        return null;
       })
   }
 }
@@ -48,7 +48,7 @@ export const fetchAllRedirectionData = () => {
         })
       })
       .catch(err => {
-        console.log("Fetch Failed", err);
+        return null;
       })
   }
 }
