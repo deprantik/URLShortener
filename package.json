@@ -1,0 +1,33 @@
+{
+  "name": "url-shortner",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev -p 5000",
+    "build": "next build",
+    "start": "next start -p 5000",
+    "lint": "next lint",
+    "do-setup-database": "node ./scripts setup-database",
+    "do-seed-database": "node ./scripts seed-database"
+  },
+  "dependencies": {
+    "data-models": "./models",
+    "isomorphic-fetch": "^3.0.0",
+    "knex": "^0.95.7",
+    "next": "^10.0.5",
+    "next-redux-wrapper": "^6.0.2",
+    "pg-promise": "^10.10.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.2",
+    "react-styled-flexboxgrid": "^3.2.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "@babel/register": "^7.14.5",
+    "nodemon": "^2.0.12"
+  }
+}
