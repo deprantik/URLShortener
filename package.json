@@ -1,14 +1,28 @@
 {
+  "name": "url-shortner",
   "version": "0.0.1",
   "scripts": {
-    "dev": "PORT=5000 next dev -p 5000",
+    "dev": "next dev -p 5000",
     "build": "next build",
-    "start": "PORT=5000 next start -p 5000",
+    "start": "next start -p 5000",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^11.0.1",
+    "data-models": "./models",
+    "isomorphic-fetch": "^3.0.0",
+    "next": "^10.0.5",
+    "next-redux-wrapper": "^6.0.2",
+    "pg-promise": "^10.10.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.2",
+    "react-styled-flexboxgrid": "^3.2.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
